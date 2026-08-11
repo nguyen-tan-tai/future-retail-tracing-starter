@@ -1,0 +1,3 @@
+com.futureretail.trace.autoconfigure.FutureRetailWebTracingAutoConfiguration
+com.futureretail.trace.autoconfigure.FutureRetailGrpcTracingAutoConfiguration
+
