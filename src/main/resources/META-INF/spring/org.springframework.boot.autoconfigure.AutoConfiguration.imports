@@ -1,3 +1,2 @@
-com.futureretail.trace.autoconfigure.FutureRetailWebTracingAutoConfiguration
-com.futureretail.trace.autoconfigure.FutureRetailGrpcTracingAutoConfiguration
-
+com.futureretail.tracing.autoconfigure.AccessLogAutoConfiguration
+com.futureretail.tracing.autoconfigure.OtelLogbackAutoConfiguration

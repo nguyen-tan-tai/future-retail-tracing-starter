@@ -1,3 +1,2 @@
-org.springframework.boot.autoconfigure.AutoConfiguration=\
-com.futureretail.trace.autoconfigure.FutureRetailWebTracingAutoConfiguration,\
-com.futureretail.trace.grpc.FutureRetailGrpcTracingAutoConfiguration
+org.springframework.context.ApplicationContextInitializer=\
+com.futureretail.tracing.config.TracingDefaultsEnvironmentPostProcessor

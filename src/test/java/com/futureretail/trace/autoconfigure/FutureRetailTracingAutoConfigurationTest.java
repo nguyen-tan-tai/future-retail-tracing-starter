@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-public class FutureRetailWebTracingAutoConfigurationTest {
+public class FutureRetailTracingAutoConfigurationTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
-            .withConfiguration(AutoConfigurations.of(FutureRetailWebTracingAutoConfiguration.class))
+            .withConfiguration(AutoConfigurations.of(FutureRetailTracingAutoConfigurationTest.class))
             .withPropertyValues("spring.application.name=test-app");
 
     @Test
     void autoConfigurationLoads() {
         contextRunner.run(context -> {
-            assertThat(context).hasSingleBean(FutureRetailWebTracingAutoConfiguration.class);
+            assertThat(context).hasSingleBean(FutureRetailTracingAutoConfigurationTest.class);
         });
     }
 }

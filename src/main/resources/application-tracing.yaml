@@ -1,0 +1,42 @@
+management:
+  opentelemetry:
+    enabled: true
+    resource-attributes:
+      service.namespace: ${spring.application.name}
+      deployment.environment: local
+    tracing:
+      export:
+        otlp:
+          endpoint: http://${OPENTELEMETRY_COLLECTOR_HOST:localhost}:4318/v1/traces
+          transport: http # default; use "grpc" + port 4317 if you prefer gRPC
+      sampler: parentbased_always_on # dev default; use ratio-based in prod, e.g. parentbased_traceidratio
+    logging:
+      export:
+        otlp:
+          endpoint: http://${OPENTELEMETRY_COLLECTOR_HOST:localhost}:4318/v1/logs
+          transport: http
+  otlp:
+    metrics:
+      export:
+        url: http://${OPENTELEMETRY_COLLECTOR_HOST:localhost}:4318/v1/metrics
+# Metrics export still uses the older "otlp" (non-"opentelemetry") prefix
+        step: 10s # export interval
+  tracing:
+    sampling:
+      probability: 1.0 # 100% for local/dev - lower this in production (e.g. 0.1)
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+# Optional: expose actuator endpoints if you want /actuator/health, /actuator/prometheus, etc.
+  endpoint:
+    health:
+      show-details: when-authorized
+    env:
+      show-values: ALWAYS
+    configprops:
+      show-values: ALWAYS
+logging:
+  structured:
+    format:
+      console: logstash # options: ecs, logstash, gelf
